@@ -1,0 +1,9 @@
+{
+  "mongodb": "mongodb://localhost/parking_lot_test",
+  "redis": "redis://127.0.0.1:6379/1",
+  "parkingCollection": "parking",
+  "maxCars": 5,
+  "amountPerHour": 1.20,
+  "discountHours": 3,
+  "discount": 0.10
+}

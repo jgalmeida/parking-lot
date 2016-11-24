@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Parking App</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.1.0/octicons.min.css">
+  </head>
+  <body>
+    <div ng-app="ParkingApp" class="container" ng-controller="MainController">
+      <h2>Parking Dashboard <b>{{initTime}}</b></h2>
+      <h3>Viewing <b>{{futureHours}}</b> hours in future</h3>
+      <h3>{{futureTime}}</h3>
+
+      <label>Hours in future</label>
+      <input type="number" ng-model="futureHours" ng-change="refresh()" />
+
+      <div class="componentData">
+        <div class="row">
+          <div class="col-xs-12">
+            <h3>Inventory totals</h3>
+            <table class="table table-bordered">
+              <thead>
+                <tr class="success">
+                  <th class="text-center">Total amount of cars</th>
+                  <th class="text-center">Total amount due</th>
+                  <th class="text-center">Total discount in cents</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">{{inventory.totalAmountOfCars}}</td>
+                  <td class="text-center">{{inventory.value}}</td>
+                  <td class="text-center">{{inventory.discountInCents}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3>Parking Lots</h3>
+            <div>
+              <form ng-submit="createParking()">
+                <label>Brand</label>
+                <input type="text" ng-model="parking.brand" />
+                <label>License plate</label>
+                <input type="text" ng-model="parking.licenseplate" />
+                <label>Parking lot Id</label>
+                <input type="number" ng-model="parking.parkinglotid" />
+                <label>Parking time</label>
+                <input type="datetime" ng-model="parking.parkingtime" />
+                <input type="submit" />
+              </form>
+              <p>{{errorMessage}}</p>
+            </div>
+            </br>
+            <label>Switch parking lot</label>
+            <input type="number" ng-model="parkinglotId" ng-change="refresh()" />
+            <p>Viewing parking lot <b>{{parkinglotId}}</b></p>
+            <h3>Stats</h3>
+            <table class="table table-bordered">
+              <thead>
+                <tr class="success">
+                  <th class="text-center">Total amount due</th>
+                  <th class="text-center">Total discount in cents</th>
+                  <th class="text-center">Total cars</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">{{totalAmountDue}}</td>
+                  <td class="text-center">{{totalDiscount}}</td>
+                  <td class="text-center">{{totalCars}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Brand</th>
+                  <th>License plate</th>
+                  <th>Parking time</th>
+                  <th>Value</th>
+                  <th>Discount in cents</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="parking in parkingLot">
+                  <td>{{parking.brand}}</td>
+                  <td>{{parking.licensePlate}}</td>
+                  <td>{{parking.parkingTime}}</td>
+                  <td>{{parking.value}}</td>
+                  <td>{{parking.discountInCents}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="stats-service.js"></script>
+    <script src="inventory-service.js"></script>
+    <script src="parkings-service.js"></script>
+    <script src="main-controller.js"></script>
+  </body>
+</html>

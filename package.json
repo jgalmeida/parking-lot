@@ -1,0 +1,65 @@
+{
+  "name": "parking-lot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --recursive test/*",
+    "style": "./node_modules/.bin/standard --verbose | ./node_modules/.bin/snazzy",
+    "start": "sh drop.sh && node bin/app.js",
+    "format": "./node_modules/.bin/standard-format -w"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "before",
+      "after",
+      "it",
+      "emit"
+    ],
+    "ignore": [
+      "/frontend/",
+      "/docs/"
+    ]
+  },
+  "engines": {
+    "node": ">=6.1.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "JSONStream": "^1.2.1",
+    "async": "^2.1.4",
+    "body-parser": "^1.15.2",
+    "boom": "^4.2.0",
+    "chai": "^3.5.0",
+    "event-stream": "^3.3.4",
+    "express": "^4.14.0",
+    "joi": "^10.0.1",
+    "lodash": "^4.17.2",
+    "mocha": "^3.1.2",
+    "moment": "^2.17.0",
+    "mongoose": "^4.7.0",
+    "morgan": "^1.7.0",
+    "pump": "^1.0.1",
+    "redis": "^2.6.3",
+    "xml-stream": "^0.4.5"
+  },
+  "devDependencies": {
+    "faker": "^3.1.0",
+    "istanbul": "^0.4.5",
+    "pre-commit": "^1.1.3",
+    "redis-mock": "^0.16.0",
+    "sinon": "^1.17.6",
+    "snazzy": "^5.0.0",
+    "snyk": "^1.20.0",
+    "standard": "^8.6.0",
+    "standard-format": "^2.2.4",
+    "supertest": "^2.0.1",
+    "tmp": "0.0.31"
+  },
+  "pre-commit": [
+    "test",
+    "style"
+  ]
+}
