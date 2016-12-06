@@ -1,6 +1,6 @@
 # ParkingLot
 
-###This is a simple project to understand some concepts
+###This is a simple project to understand some concepts including Nodejs, Mongodb, Redis.
 
 
 ### Let's start
